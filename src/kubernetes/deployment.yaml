@@ -1,0 +1,24 @@
+# this manifest creates creates 3 pods with current project (from my docker repo)
+# you should try to change amount of replicas
+# try to /kubectl get pods --all-namespaces/  from cmd
+# than del one of them and try to get all pods one more time
+#
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: replicas
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: spring-boot-kubernetes
+  template:
+    metadata:
+      labels:
+        project: spring-boot-kubernetes
+    spec:
+      containers:
+        - name : my-app
+          image: imaksimkin/k8s2app:v2
+          ports:
+            - containerPort: 8086

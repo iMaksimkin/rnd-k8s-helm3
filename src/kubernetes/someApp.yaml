@@ -1,0 +1,23 @@
+# create your first manifest
+# you can use images from official docker repo
+# https://hub.docker.com/search?q=&type=image&image_filter=official
+#
+apiVersion: v1
+kind: Pod
+metadata: 
+ name: app
+spec: 
+ containers: 
+  - name: grafana
+    image: grafana/grafana:latest
+    ports:
+    - containerPort: 3000
+  - name: frontend
+    image: nginx:latest
+    ports:
+     - containerPort: 80
+  - name: api
+    image: imaksimkin/k8s2app:v1
+    ports:
+    - containerPort: 8086
+

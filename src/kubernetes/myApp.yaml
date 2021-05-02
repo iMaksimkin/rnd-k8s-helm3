@@ -1,0 +1,16 @@
+# try to create kubernetes manifest with you project
+# you can change path to image on yours but you need to be sure
+# the port we will look at
+#
+apiVersion: v1
+kind: Pod
+metadata: 
+ name: app
+spec: 
+ containers: 
+  - name: spring-boot-app
+    image: imaksimkin/k8s2app:v2
+    ports:
+    - containerPort: 8086
+    imagePullPolicy: Always
+
